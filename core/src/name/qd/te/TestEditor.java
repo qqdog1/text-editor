@@ -50,6 +50,9 @@ public class TestEditor extends Game {
 
 		assetManager.load("pic/plus.png", Texture.class);
 		assetManager.load("pic/bg_color.png", Texture.class);
+		assetManager.load("pic/bg2.png", Texture.class);
+		assetManager.load("pic/next.png", Texture.class);
+		assetManager.load("pic/cancel.png", Texture.class);
 
 		assetManager.finishLoading();
 	}
