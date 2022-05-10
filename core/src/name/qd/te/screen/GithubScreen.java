@@ -63,7 +63,7 @@ public class GithubScreen extends GameScreen {
 
     @Override
     public ScreenType currentScreen() {
-        return ScreenType.GITHUB;
+        return ScreenType.SHOWREPO;
     }
 
     @Override

@@ -2,7 +2,7 @@ package name.qd.te.constant;
 
 public enum ScreenType {
     LOGO,
-    GITHUB,
+    SHOWREPO,
     ADDREPO,
     EDITOR,
     ;
