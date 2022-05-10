@@ -26,6 +26,9 @@ public class ScreenManager {
                 case GITHUB:
                     map.put(screenType, new GithubScreen());
                     break;
+                case ADDREPO:
+                    map.put(screenType, new AddRepoScreen());
+                    break;
                 case EDITOR:
                     map.put(screenType, new EditorScreen());
                     break;
@@ -37,6 +40,7 @@ public class ScreenManager {
     public void closeScreen(ScreenType screenType) {
         switch (screenType) {
             case LOGO:
+            case ADDREPO:
                 map.remove(screenType).dispose();
                 break;
             // 常用的screen 留著instance
