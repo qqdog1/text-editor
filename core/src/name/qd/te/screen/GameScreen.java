@@ -24,8 +24,8 @@ public abstract class GameScreen implements Screen {
     protected final AssetManager assetManager;
     protected final Stage stage;
 
-    private OrthographicCamera camera;
-    private Viewport viewport;
+    private final OrthographicCamera camera;
+    private final Viewport viewport;
 
     protected GameScreen() {
         spriteBatch = ResourceManager.getInstance().getSpriteBatch();

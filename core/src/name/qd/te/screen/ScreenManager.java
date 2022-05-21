@@ -6,7 +6,7 @@ import java.util.Map;
 import name.qd.te.constant.ScreenType;
 
 public class ScreenManager {
-    private static ScreenManager instance = new ScreenManager();
+    private final static ScreenManager instance = new ScreenManager();
 
     private Map<ScreenType, GameScreen> map = new HashMap<>();
 

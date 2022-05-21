@@ -9,14 +9,14 @@ import name.qd.te.constant.ScreenType;
 import name.qd.te.util.MaterialCreator;
 
 public class LogoScreen extends GameScreen {
-    private Animation animation;
-    private Texture echohole;
+    private final Animation<TextureRegion> animation;
+    private final Texture echohole;
     private float stateTime;
 
-    private float scaleWidth;
-    private float scaleHeight;
-    private float x;
-    private float y;
+    private final float scaleWidth;
+    private final float scaleHeight;
+    private final float x;
+    private final float y;
 
     public LogoScreen() {
         // 因為圖片一格是256 * 256
@@ -46,7 +46,7 @@ public class LogoScreen extends GameScreen {
         stage.draw();
 
         spriteBatch.begin();
-        spriteBatch.draw((TextureRegion)animation.getKeyFrame(stateTime), x, y, scaleWidth, scaleHeight);
+        spriteBatch.draw(animation.getKeyFrame(stateTime), x, y, scaleWidth, scaleHeight);
         if(animation.isAnimationFinished(stateTime)) {
             spriteBatch.draw(echohole, (WIDTH - echohole.getWidth() * SCALE_RATE) / 2, y - echohole.getHeight() * SCALE_RATE, echohole.getWidth() * SCALE_RATE, echohole.getHeight() * SCALE_RATE);
         }

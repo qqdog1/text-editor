@@ -22,6 +22,11 @@ public class AddRepoScreen extends GameScreen {
     private TextButton nextButton;
     private TextButton cancelButton;
 
+    private final int STATUS_ACCOUNT = 0;
+    private final int STATUS_REPO = 1;
+    private final int STATUS_TOKEN = 2;
+    private int status = STATUS_ACCOUNT;
+
     public AddRepoScreen() {
         bitmapFont = MaterialCreator.getDefaultFont(1 * SCALE_RATE);
         bitmapFont.setColor(Color.BLACK);
@@ -42,7 +47,20 @@ public class AddRepoScreen extends GameScreen {
         nextButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                switch (status) {
+                    case STATUS_ACCOUNT:
+                        status = STATUS_REPO;
+                        // get account's repos
 
+                        break;
+                    case STATUS_REPO:
+                        status = STATUS_TOKEN;
+                        // add repos
+
+                        break;
+                    case STATUS_TOKEN:
+                        break;
+                }
             }
         });
     }
@@ -72,6 +90,20 @@ public class AddRepoScreen extends GameScreen {
         spriteBatch.begin();
         spriteBatch.draw(assetManager.get("pic/bg_color.png", Texture.class), 0, 0, WIDTH, HEIGHT);
         bitmapFont.draw(spriteBatch, "Add Repos", 3 * SCALE_RATE, HEIGHT - 3 * SCALE_RATE);
+        switch (status) {
+            case STATUS_ACCOUNT:
+                bitmapFont.draw(spriteBatch, "input github account: ", 3 * SCALE_RATE, HEIGHT * 2 / 3 + bitmapFont.getLineHeight());
+
+                break;
+            case STATUS_REPO:
+                bitmapFont.draw(spriteBatch, "choose a repo: ", 3 * SCALE_RATE, HEIGHT * 2 / 3 + bitmapFont.getLineHeight());
+
+                break;
+            case STATUS_TOKEN:
+                bitmapFont.draw(spriteBatch, "input personal access token : ", 3 * SCALE_RATE, HEIGHT * 2 / 3 + bitmapFont.getLineHeight());
+
+                break;
+        }
         spriteBatch.end();
         stage.draw();
     }

@@ -65,6 +65,10 @@ public class MaterialCreator {
         return new Label.LabelStyle(font, color);
     }
 
+    public static Label.LabelStyle getDefaultLabelStyle(Color color, BitmapFont bitmapFont) {
+        return new Label.LabelStyle(bitmapFont, color);
+    }
+
     public static BitmapFont getDefaultFont(float scale) {
         BitmapFont font = new BitmapFont(Gdx.files.internal("font/font.fnt"), Gdx.files.internal("font/font.png"), false);
         font.getData().setScale(scale);
