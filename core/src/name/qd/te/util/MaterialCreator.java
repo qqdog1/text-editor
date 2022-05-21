@@ -32,6 +32,11 @@ public class MaterialCreator {
         return new TextButton(text, style);
     }
 
+    public static TextButton createTextButton(String text, BitmapFont font) {
+        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle(null, null, null, font);
+        return new TextButton(text, textButtonStyle);
+    }
+
     public static TextButton createTextButton(Texture texture, String text) {
         return createTextButton(texture, texture, text);
     }

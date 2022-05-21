@@ -13,28 +13,18 @@ import name.qd.te.constant.ScreenType;
 import name.qd.te.util.MaterialCreator;
 import name.qd.te.util.ResourceManager;
 
-public class GithubScreen extends GameScreen {
+public class GithubRepoScreen extends GameScreen {
     private ResourceManager resourceManager = ResourceManager.getInstance();
 
-    private Table table;
     private BitmapFont bitmapFont;
     private ImageButton plusButton;
 
-    public GithubScreen() {
+    public GithubRepoScreen() {
         bitmapFont = MaterialCreator.getDefaultFont(1 * SCALE_RATE);
         bitmapFont.setColor(Color.BLACK);
 
         initButton();
-
-        table = new Table();
-        table.top().right();
-        table.setWidth(WIDTH);
-        table.setHeight(HEIGHT);
-        table.setDebug(true);
-
-        float plusButtonWidth = WIDTH / 8;
-        table.add(plusButton).width(plusButtonWidth).height(plusButtonWidth);
-        stage.addActor(table);
+        initTable();
     }
 
     private void initButton() {
@@ -45,6 +35,18 @@ public class GithubScreen extends GameScreen {
                 toNextScreen(ScreenType.ADDREPO);
             }
         });
+    }
+
+    private void initTable() {
+        Table table = new Table();
+        table.top().right();
+        table.setWidth(WIDTH);
+        table.setHeight(HEIGHT);
+        table.setDebug(true);
+
+        float plusButtonWidth = WIDTH / 8;
+        table.add(plusButton).width(plusButtonWidth).height(plusButtonWidth);
+        stage.addActor(table);
     }
 
     @Override
@@ -63,7 +65,7 @@ public class GithubScreen extends GameScreen {
 
     @Override
     public ScreenType currentScreen() {
-        return ScreenType.SHOWREPO;
+        return ScreenType.GITHUBREPO;
     }
 
     @Override

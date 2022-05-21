@@ -40,7 +40,7 @@ public class LogoScreen extends GameScreen {
         stateTime += delta;
 
         if(stateTime >= 5) {
-            toNextScreen(ScreenType.SHOWREPO);
+            toNextScreen(ScreenType.GITHUBREPO);
         }
 
         stage.draw();
@@ -55,7 +55,7 @@ public class LogoScreen extends GameScreen {
 
     protected void handleInput() {
         if(Gdx.input.justTouched() && stateTime >= 2) {
-            toNextScreen(ScreenType.SHOWREPO);
+            toNextScreen(ScreenType.GITHUBREPO);
         }
     }
 

@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import name.qd.te.constant.ScreenType;
@@ -17,31 +17,28 @@ import name.qd.te.util.ResourceManager;
 public class AddRepoScreen extends GameScreen {
     private ResourceManager resourceManager = ResourceManager.getInstance();
 
-    private Table table;
     private BitmapFont bitmapFont;
     private TextArea inputTextArea;
-    private ImageButton cancelButton;
-    private ImageButton nextButton;
+    private TextButton nextButton;
+    private TextButton cancelButton;
 
     public AddRepoScreen() {
         bitmapFont = MaterialCreator.getDefaultFont(1 * SCALE_RATE);
         bitmapFont.setColor(Color.BLACK);
 
         initButton();
-
-        table = new Table();
-        table.setDebug(true);
+        initTable();
     }
 
     private void initButton() {
-        cancelButton = MaterialCreator.createImageButton(assetManager.get("pic/cancel.png", Texture.class));
+        cancelButton = MaterialCreator.createTextButton("Cancel", bitmapFont);
         cancelButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                toNextScreen(ScreenType.SHOWREPO);
+                toNextScreen(ScreenType.GITHUBREPO);
             }
         });
-        nextButton = MaterialCreator.createImageButton(assetManager.get("pic/next.png", Texture.class));
+        nextButton = MaterialCreator.createTextButton("Next", bitmapFont);
         nextButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -50,9 +47,23 @@ public class AddRepoScreen extends GameScreen {
         });
     }
 
+    private void initTable() {
+        Table table = new Table();
+        table.top().center();
+        table.setWidth(WIDTH);
+        table.setHeight(HEIGHT);
+        table.setDebug(true);
+
+        table.bottom().left();
+        table.setHeight(nextButton.getHeight() * 2);
+        table.setDebug(true);
+        table.add(cancelButton).width(WIDTH / 2).height(nextButton.getHeight() * 2);
+        table.add(nextButton).width((WIDTH / 2)).height(nextButton.getHeight() * 2);
+        stage.addActor(table);
+    }
+
     @Override
     void handleInput() {
-
     }
 
     @Override
