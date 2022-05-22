@@ -67,12 +67,16 @@ public class AddRepoScreen extends GameScreen {
 
     private void initTable() {
         Table table = new Table();
-        table.top().center();
+        table.bottom().left();
         table.setWidth(WIDTH);
         table.setHeight(HEIGHT);
         table.setDebug(true);
 
-        table.bottom().left();
+        inputTextArea = MaterialCreator.createTextArea(bitmapFont, Color.BLACK, Color.WHITE);
+        table.add(inputTextArea).width(WIDTH * 2 / 3).height(bitmapFont.getLineHeight() * 2)
+        .padBottom(HEIGHT / 2).colspan(2);
+
+        table.row().left();
         table.setHeight(nextButton.getHeight() * 2);
         table.setDebug(true);
         table.add(cancelButton).width(WIDTH / 2).height(nextButton.getHeight() * 2);
